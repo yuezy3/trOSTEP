@@ -1,0 +1,72 @@
+﻿\ProvidesPackage{OSTEPcommon}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[sorting=none, backend=biber,refsection=chapter]{biblatex}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{xeCJK}
+\usepackage{listings}
+\usepackage{indentfirst}
+\usepackage{imakeidx}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{mdframed}
+
+\makeindex[title=索引,intoc]
+\makeindex[name=crux,title=症结索引,intoc]
+\newfloat{floatcrux}{tbh}{mycrux}
+\addbibresource{./allbook.bib}
+
+
+\newenvironment{dedication}
+{\clearpage           % we want a new page
+	\thispagestyle{empty}% no header and footer
+	\vspace*{\stretch{1}}% some space at the top 
+	\itshape             % the text is in italics
+	\raggedleft          % flush to the right margin
+}
+{\par % end the paragraph
+	\vspace{\stretch{3}} % space at bottom is three times that at the top
+	\clearpage           % finish off the page
+	\thispagestyle{empty}% no header and footer
+	\null
+	\newpage
+}
+
+\newenvironment{mycrux}[2]
+{\begin{floatcrux}[tbh]           %
+    \mdfsetup{backgroundcolor=gray!20,frametitle=#2,frametitlealignment=\center}
+    \begin{mdframed}              %
+	\index[crux]{#1 @ #2}         %
+}
+{\end{mdframed}                   %
+    \end{floatcrux}               %
+}
+
+\newcommand{\citeholder}[1]{(#1)}
+\linespread{1.3}
+\setlength{\parskip}{0.5\baselineskip}
+\newenvironment{mydlg}{\setlength{\parindent}{0pt} \ignorespaces } %
+{\par \noindent}
+\newcommand{\mkidx}[2]{\textbf{#2} \index{#1@#1 #2}}
+
+
+
+\lstdefinestyle{customc}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  xleftmargin=\parindent,
+  language=C,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+  tabsize=4,
+  numbers=left,
+  numberstyle=\tiny
+}
+

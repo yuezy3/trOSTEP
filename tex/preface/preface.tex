@@ -1,0 +1,236 @@
+\chapter*{前言}
+\phantomsection
+\addcontentsline{toc}{section}{给所有人}
+\section*{给所有人}
+欢迎来到本书。我们希望你会像我们享受写作本书一样享受阅读它。
+这本书叫做\mkidx{Operating Systems in Three Easy Pieces}{操作系统Three Easy Pieces}，
+书名显然是向费曼在物理学上的一部有史以来最伟大的讲义\citeholder{F96}致敬的。
+虽然本书毫无疑问达不到像那位著名物理学家的高水准，但也许它对寻求理解整个操作系统（或更
+广义地，整个系统）的你来说也许是足够的。
+
+三个简单部分指本书围绕的三个主要专题：
+\mkidx{virtualization}{虚拟化}，
+\mkidx{concurrency}{并发性}和
+\mkidx{persistence}{持久化}。在讲这些概念时，我们会讨论大多数
+操作系统执行的重要事情；希望你在这过程中也会感到有趣。学习新东西应该很有趣对吧，至少应该
+有趣。
+
+每个主要的概念都被分为好几个章节，其中大部分章节是提出一个具体问题然后展示如何解决它。
+每章都很短，并且尽量参考那些最初提供那些想法（概念的原型）的材料。我们写作本书的一个
+目标就是使历史的路径尽可能清晰，因为这样将帮助学生更清楚的理解“它现在是什么、它曾
+经是什么、它将来会是什么”。 在这里，知道香肠是怎么制作的和理解香肠适合做什么同样重
+要\footnote{提示：吃！或者如果你是一个素食主义者，走开}。
+
+有一些本书通篇会使用的方法值得在这里提一下。第一个就是问题的
+\mkidx{crux}{症结}。任何时候
+我们试图解决一个问题时，首先就是尝试陈述问题最重要的焦点是什么；在行文中
+想这样的\mkidx{crux of the problem}{问题的症结}
+会被直接指出，而且希望通过后面呈现的一些技术、算法和想法来解决。
+
+文中也有许多为正文提供一些色彩的\mkidx{asides}{旁白}和
+\mkidx{tips}{提示}。旁白通常讨论和正文相关的东西（但可能不是本质的）；
+提示通常是可以应用到系统的一般经验。为了方便，本书末尾有一个列出了所有旁白、提示和症结的
+索引。
+
+我们在本书中还使用了一种古老的说教方法：\mkidx{dialogue}{对话}，作为
+呈现一些材料的不同方式。对话被用来引入主要概念（以一种很自然的方式，你会看到）以及时不时
+回顾一下材料。对话也可以作为写的更幽默一些的机会，不够你发现它是有用还是幽默，恩，这是另
+一回事了。
+
+在每个主要部分的开始处，我们首先给出操作系统所提供的
+\mkidx{abstraction}{抽象}，然后在后续章节里探索为提供这个抽象
+所需要的机制、策略和其他需要的支持。抽象是计算机科学所有方面的基础，所以也毫无疑问是操作系统
+的本质。
+
+在各个章节里，我们在可能的地方都使用\mkidx{real code}{实际代码}
+（而不是\mkidx{pseudocode}{伪代码}），所以基本上
+所有例子，你都可以能够输入和运行它们。在真实系统上运行实际代码会是学习操作系统最好的方法。所
+以我们也鼓励你可以这样做时就去做。
+
+在本书的不同地方，我们都搞了点\mkidx{homeworks}{家庭作业}来保证
+你理解文中内容。许多这样的家庭作业都是
+操作系统部件的小仿真；你应该下载这些作业，运行他们来测验自己。家庭作业的仿真器有一下特征：
+通过给他们不同的随机数种子，你几乎可以产生无穷的问题集；仿真器也可以被要求解决你的问题。因
+此，你可以测试、再测试自己直到你达到一个比较好的理解程度。
+
+本书最重要的补充是一些\mkidx{projects}{工程}，通过设计、实现和测试你自己的代码，你可以学到真实系统是
+如何运行的。所有的工程（包括代码示例，前面提到过）用的都是C语言
+\mkidx{C programming language}{C语言} \citeholder{KR88}；C是大多数
+操作系统底层采用的一种简单强大的语言，很值得你将它加入你自己的语言工具箱。有两种类型的工程
+可供选择（到在线附录里去）。第一种是
+\mkidx{systems programming}{系统编程}类项目；
+这种工程很适合想学底层C编程的C和UNIX新
+手。第二种是基于MIT开发的一个叫xv6\citeholder{CK+08}的真实操作系统内核；这种工程很适合那些
+想深入到操作系统内部的已经具备了C语言基础的同学。在华盛顿，我们以三种不同方式开过这个课：
+全是系统编程，全是xv6编程，或者这两者混合。
+
+\clearpage
+
+\phantomsection
+\addcontentsline{toc}{section}{给执教者}
+\section*{给执教者}
+如果你是想使用本书的教师或教授\cite{RichardP.Feynman2011}，请自由使用。你也许注意到，它们
+可以在下面的网页上自由获取：
+
+%\lstset{numbers=none}
+%\begin{lstlisting}
+%        http://www.ostep.org
+%\end{lstlisting}
+\begin{quote}
+	\url{http://www.ostep.org}
+\end{quote}
+
+你也可以在\url{lulu.com}上买打印的副本。在上面的页面上可以找到。
+
+目前可以像这样来引用本书： 
+\begin{quote}
+	\textbf{Operating Systems: Three Easy Pieces} \\
+	Remzi H. Arpaci-Dusseau and Andrea C. Arpaci-Dusseau \\
+	Arpaci-Dusseau Books, Inc. \\
+	May, 2014 (Version 0.8) \\
+	\url{http://www.ostep.org}
+\end{quote}
+
+这个课程分成15周的学期比较好，这样你可以以一个合理的深度讲完大部分主题。将课程压缩到一个
+10周的季度可能要丢掉一些细节。也有些章节是关于虚拟机监视器的，我们通常将其挤到一个学期的
+不同时候，要么在虚拟化部分结束时，要么在接近结束时作为旁白。
+
+本书一个稍微不同的地方是并发性部分,大多数操作系统的书籍将这个主题放到前面，本书将其推后到
+学生已经对CPU和内存的虚拟化有了一定理解之后。教授这门课的将近15年的经验显示，如果不理解
+什么是地址空间，什么是进程，或者为什么上下文切换可以发生在任意时间点，那么学生将很难理解
+并发问题是怎么产生的，或者为什么他们会尝试去解决并发问题。而一旦他们理解了那些概念，引入
+线程记号和由此引发的问题就会变得相对容易，或者至少更容易些。
+
+你也许注意到本书没有附带幻灯片。这个缺失的主要原因是我们相信最老式教学方法：粉笔和一块黑板。
+所以，当教授这门课时，我们带着几个主要观念和几个例子，然后用黑板呈现它们；讲义文稿和少许
+代码示例也是很有用的。以我们的经验，使用过多的幻灯片会使学生们仅仅“登记”一下课程（然后就去
+刷脸书），因为它们知道材料就在那等着他们稍后消化；使用黑板使课具有生动的体验，因而（希望）
+对课上的学生来说更具有交互性、动态性和有趣。
+
+如果你想要一份我们备课的笔记，请发封邮件索取。我们已经将其分享给了全世界的很多人了。
+
+最后一个请求：如果你使用在线免费章节，请不要做本地拷贝，直接\textbf{链接}到章节就是。这将
+帮助我们追踪使用情况（过去几年有超过一百万次下载！）也会保证学生们得到最新的版本。
+
+\clearpage
+
+\phantomsection
+\addcontentsline{toc}{section}{给学生}
+\section*{给学生}
+如果你是阅读本书的学生，非常感谢！我们很荣幸能提供一些资料帮助你追寻有关操作系统的知识。我们
+都深情的回忆起我们本科阶段的一些教科书（例如，Hennessy and Patterson\citeholder{HP90},计
+算机架构的经典教科书）并希望本书会成为你具有良好回忆的书中的一本。
+
+你也许注意到本书可以在线免费获取。这样做的一个主要的原因是：教科书通常都太贵了。这本书，我们
+希望，会是帮助那些在追寻良好教育的人的第一波免费材料，不管他们是来自世界的那个地方或他们
+愿意为书本花多少钱。如果做不到那样，这本免费的书，也总好过没有。
+
+我们同时也希望，在可能的地方，向你指出本书许多材料的最初来源：那些伟大的论文和那些在操作系统
+领域耕耘多年的人。想法不是凭空产生的；它们来自那些聪明并且努力工作的人（包括许多图灵奖获
+得者\footnote{图灵奖是计算机科学的最高奖项，就像诺贝尔奖，只不过你可能从来没听说过。}），
+因此我们在可能时应该努力赞扬那些想法和那些人。这样，我们希望能更好的理解那时发生的变革，而不是
+像那些观点从来就存在一样书写\citeholder{K62}。更进一步地，这样的引用文献也许会鼓励你自己
+更进一步的深究；阅读本领域内的著名论文的确会是一种最好的学习方法。
+\clearpage
+
+\phantomsection
+\addcontentsline{toc}{section}{致谢}
+\section*{致谢}
+本节包含所有帮助过本书写作的人的感谢。最重要的事是：\textbf{你的名字也可以在这里！}但是，你
+必须先提供帮助。所以请给我们发送反馈并帮助本书除错。然后你就可以出名了！或者，至少将你的名字
+写入一些书里。
+
+到目前为止帮助过我们的人包括：Abhirami Senthilkumaran*, Adam Drescher* (WUSTL), 
+Adam Eggum, Ahmed Fikri*, Ajaykrishna Raghavan, Akiel Khan, Alex Wyler, 
+Anand Mundada, B. Brahmananda Reddy (Minnesota), Bala SubrahmanyamKambala, 
+Benita Bose, BiswajitMazumder (Clemson), Bobby Jack, Bj ¨orn Lindberg, 
+Brennan Payne, Brian Kroth, Cara Lauritzen, Charlotte Kissinger, 
+Chien-Chung Shen (Delaware)*, Christoph Jaeger, Cody Hanson, 
+Dan Soendergaard (U. Aarhus), David Hanle (Grinnell), Deepika Muthukumar, 
+Dorian Arnold (NewMexico), DustinMetzler, Dustin Passofaro, Emily Jacobson, EmmettWitchel (Texas), Ernst Biersack (France), Finn Kuusisto*, 
+Guilherme Baptista, Hamid Reza Ghasemi, Henry Abbey, Hrishikesh Amur, 
+Huanchen Zhang*, Hugo Diaz, Jake Gillberg, James Perry (U.Michigan-Dearborn)*, 
+Jan Reineke (Universit¨at des Saarlandes), Jay Lim, Jerod Weinman (Grinnell), 
+Joel Sommers (Colgate), Jonathan Perry (MIT), Jun He, Karl Wallinger, 
+Kartik Singhal, Kaushik Kannan, Kevin Liu*, Lei Tian (U.Nebraska-Lincoln), 
+Leslie Schultz, LihaoWang, MarthaFerris,Masashi Kishikawa (Sony), Matt Reichoff, 
+Matty Williams, Meng Huang, Mike Griepentrog, Ming Chen (Stonybrook), 
+Mohammed Alali (Delaware),Murugan Kandaswamy, Natasha Eilbert,  Nathan Dipiazza, 
+Nathan Sullivan, Neeraj Badlani (N.C. State), Nelson Gomez, NghiaHuynh (Texas), 
+Patricio Jara, Radford Smith, RiccardoMutschlechner, Ripudaman Singh, Ross Aiken, Ruslan Kiselev, Ryland Herrick, Samer AlKiswany, SandeepUmmadi (Minnesota), 
+Satish Chebrolu (NetApp), Satyanarayana Shanmugam*, Seth Pollen, Sharad Punuganti, 
+Shreevatsa R., Sivaraman Sivaraman*, Srinivasan Thirunarayanan*, 
+Suriyhaprakhas BalaramSankari, SyJinCheah, Thomas Griebel, Tongxin Zheng, 
+Tony Adkins, Torin Rudeen (Princeton), Tuo Wang, Varun Vats, Xiang Peng, Xu Di, 
+Yue Zhuo (Texas A\&M), Yufui Ren, Zef RosnBrick, Zuyu Zhang. 特别感谢以上那些标注了
+星号的人，他们不仅仅提供建议帮助提高本书。
+
+特别感谢Joe Meehean(Lynchburg)教授和他的每章详细笔记，Jerod Weinman(Grinnell)教授
+和他的全班的超赞的小册子，Chien-Chung Shen(Delaware)和他的宝贵详细的阅读和注释。所有
+的三人都极大的帮助了作者们改善本书的材料。
+
+此外，还要感谢这些年来上537课的上百位学生。特别要感谢那些鼓励本书从笔记成型为书本的08秋季班
+学生（他们特别讨厌没有一本教科书来读--执意的学生们！）他们还给我们足够的赞扬让我们保持前进
+（其中在今年的课上还有一个滑稽的评论“哎呀我的天啊，你应该写一本教科书啊！”）。
+
+我们也亏欠了几个上xv6实验课（大部分现已纳入537主课程里了）的勇士。09年春季班： 
+Justin Cherniak, Patrick Deline, Matt Czech, Tony Gregerson, Michael Griepentrog, 
+Tyler Harter, Ryan Kroiss, Eric Radzikowski, Wesley Reardan, Rajiv Vaidyanathan, 
+和 Christopher Waclawik。09年秋季班： Nick Bearson, Aaron  Brown, Alex Bird, 
+David Capel, Keith Gould, Tom Grim, Jeffrey Hugo, Brandon Johnson, John Kjell, 
+Boyan Li, James Loethen,Will McCardell, Ryan Szaroletta, Simon Tso, and Ben Yule.
+10年春季班： Patrick Blesi, Aidan Dennis-Oehling, Paras Doshi, Jake Friedman, 
+Benjamin Frisch, Evan Hanson, Pikkili Hemanth, Michael Jeung, Alex Langenfeld, 
+Scott Rick, Mike Treffert, Garret Staus, Brennan Wall, Hans Werner, Soo-Young Yang, 
+和 Carlos Griffin (almost).
+
+虽然我们的研究生们没有直接帮助本书，但他们教了我们很多关于我们已知的系统。他们在
+威斯康星州（Wisconsin）时我们定期与他们交谈，但他们确实是在做实际的工作，而且通过告诉
+我们他们在做什么让我们每周都能学到些新东西。这个列表包括共同发表过文章的当前的和以前的学
+生；星号标记的是那些在我们的引导下获得了博士学位的人：Abhishek Rajimwale, Ao Ma, 
+Brian Forney, Chris Dragga, Deepak Ramamurthi, Florentina Popovici*, 
+Haryadi S. Gunawi*, James Nugent, John Bent*, Lanyue Lu, Lakshmi Bairavasundaram*, 
+Laxman Visampalli, Leo Arulraj, Meenali Rungta,Muthian Sivathanu*, 
+Nathan Burnett*, Nitin Agrawal*, Sriram Subramanian*, Stephen Todd Jones*, 
+Suli Yang, Swaminathan Sundararaman*, Swetha Krishnan, Thanh Do, 
+Thanumalayan S. Pillai, Timothy Denehy*, Tyler Harter, Venkat Venkataramani, 
+Vijay Chidambaram, Vijayan Prabhakaran*, Yiying Zhang*, Yupu Zhang*, Zev Weiss.
+
+最后还要感激Aaron Brown，它多年前（09春节班开始）第一次开这个课，然后开xv6实验课（09秋季班），
+还要感激为本课做了差不多两年（10秋季班到12春季班）的助教。他的勤奋工作对工程进展（特别是xv6的
+那一块）很有帮助，也让威斯康星州（Wisconsin）数不清的本科和研究生们获得了更好的学习体验。就像
+Aaron会说的（以他一贯的简洁风格）：“谢了”。
+\clearpage
+
+\phantomsection
+\addcontentsline{toc}{section}{最后一句}
+\section*{最后一句}
+叶芝(William Butler Yeats)的名句说“教育并不是填桶，而是点亮一把火。”他是对的，同时
+也是错的\footnote{假如他确实说过这话；就像很多名言一样，这个名言的历史也是模糊的。}。你其
+实还是要做一些“填桶”工作的，而这些笔记在这里无疑会对你的学业有帮助的；毕竟，当到Google面
+试，他们问你一些有关信号量的刁钻问题时，你最好还是要知道什么是信号量，对吧？
+
+但是叶芝的主要观点也是明确的：教育的真实意思是让你对某事物产生兴趣，自动的去学习有关主题的
+更多知识，而不仅仅是消化已学的并在课上得个好分数。就像我们其中
+的一位父亲(Remzi的父亲, Vedat Arpaci)说过：“学习要超越课堂”。
+
+我们写了这些笔记来激发你对操作系统的兴趣，进一步在这个主题下阅读，和你的教授谈这个领域
+中进行的令人兴奋的研究，甚至是亲自参与到研究中去。这是一个很棒的领域，到处都是对计算历史
+有着重要而深远的影响，而且令人兴奋又精彩的想法。虽然我们知道这把火不会点燃你们全部，但我们
+希望他能点燃你们中的大部分，即使是一些也很值得。因为一旦这把火亮了，那就是你真正能够做一些
+伟大事情的时候了。因此教育过程的真正要点就是：前进，去学习很多新的迷人的主题，学习，成熟，
+然后最重要的，找到那把能够点燃你的火。
+
+\bigskip
+\noindent Andrea and Remzi \\
+Married couple \\
+Professors of Computer Science at the University of Wisconsin \\
+Chief Lighters of Fires, 
+hopefully.\footnote{如果这听起来像是我们接受了过去一些纵火犯们的历史的话，那你可能会错意
+	了。也许。如果这听起来很勉强，那是因为他就是很勉强，但你要原谅我们。}
+\clearpage
+
+\phantomsection
+\printbibliography[heading=subbibintoc,title={引用文献}]
+
+

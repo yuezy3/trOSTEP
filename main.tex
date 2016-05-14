@@ -1,0 +1,39 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{OSTEPcommon}
+
+
+\begin{document}
+
+\frontmatter
+\title{操作系统的三个容易片段}
+\author{REMZI H.ARPACI-DUSSEAU \\
+	ANDREA C. ARPACI-DUSSEAU \\
+	UNIVERSITY OF WISCONSIN-MADISON}
+\maketitle
+\thispagestyle{empty}% no header and footer
+\null
+\newpage
+% \input{./tex/title.tex}
+\begin{dedication}
+	\copyright{}2014 by Arpaci-Dusseau Books, Inc.\\
+	All rights reserved
+\end{dedication}
+\begin{dedication}
+	献给Vedat S. Arpaci，一位人生典范
+\end{dedication}
+
+\setcounter{page}{1}
+\input{./tex/preface/preface.tex}
+\tableofcontents
+\listoffigures
+\listoftables
+
+\mainmatter
+\input{./tex/chapter01/chapter01}
+\input{./tex/chapter02/chapter02}
+
+\backmatter
+% bibliography, glossary and index would go here.
+\printindex
+\printindex[crux]
+\end{document}
